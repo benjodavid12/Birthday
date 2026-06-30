@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Photo Memories</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: rgb(245, 56, 50);
+            color: #eee;
+            text-align: center;
+            padding: 40px;
+            margin: 0;
+        }
+        h1 {
+            color: #ffd700;
+            margin-bottom: 40px;
+            font-size: 2.8em;
+        }
+        
+        .film-strip {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .strip {
+            background: #111;
+            padding: 15px 10px;
+            border: 8px solid #ddd;
+            border-image: linear-gradient(#444, #ddd, #444) 1;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            transform: rotate(-2deg);
+            transition: all 0.4s;
+        }
+        
+        .strip:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .strip-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .photo {
+            width: 140px;
+            height: 200px;
+            background: #222;
+            border: 4px solid #fff;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            overflow: hidden;
+        }
+        
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .caption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        
+        .small-strip {
+            transform: rotate(3deg);
+        }button {
+            background-color: rgb(255, 255, 255);
+        border: none;
+    border-radius: 50px;
+    color: rgb(245, 56, 50);
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-top: 30px;
+    padding: 15px 40px;
+    transition: all 0.3s ease;
+        }button:hover {
+        background-color: rgb(230, 177, 176);
+        transform: scale(1.05);
+        color: rgb(245, 56, 50);
+        }
+    </style>
+</head>
+<body>
+    <h1>📼 Our Memories❤️</h1>
+    <p style="max-width:700px;margin:0 auto 40px;font-size:1.2em;">Moments captured forever...</p>
+
+    <div class="film-strip">
+        <!-- Strip 1 -->
+        <div class="strip small-strip">
+            <div class="strip-vertical">
+                <div class="photo"><image src="first.jpg" alt="First Memory"></image></div>
+                <div class="photo">🌌</div>
+            </div>
+            <div class="caption">Our First Spark</div>
+        </div>
+
+        <!-- Strip 2 -->
+        <div class="strip">
+            <div class="strip-vertical">
+                <div class="photo">🚀</div>
+                <div class="photo">🧠</div>
+                <div class="photo">💡</div>
+            </div>
+            <div class="caption">Adventures Together</div>
+        </div>
+
+        <!-- Strip 3 -->
+        <div class="strip small-strip">
+            <div class="strip-vertical">
+                <div class="photo">😂</div>
+                <div class="photo">🌟</div>
+            </div>
+            <div class="caption">Laughs &amp; Stars</div>
+        </div>
+
+        <!-- Strip 4 -->
+        <div class="strip">
+            <div class="strip-vertical">
+                <div class="photo">🌍</div>
+                <div class="photo">🔭</div>
+                <div class="photo">🤝</div>
+            </div>
+            <div class="caption">Exploring the Universe</div>
+        </div>
+    </div>
+
+    <button id="openButton" onclick="window.location.href='front.html'">Back</button>
+</body>
+</html>
