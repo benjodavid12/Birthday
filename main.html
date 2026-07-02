@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Georgia', serif;
-            background: rgb(245, 56, 50);
+            background: rgb(210, 4, 45);
             color: #eee;
             text-align: center;
             padding: 40px;
@@ -98,10 +98,28 @@
             margin: 0 auto 40px;
             font-size: 1.2em;
             text-align: left;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 202, 202, 0.214);
             padding: 20px;
             border-radius: 10px;
         }
+        video {
+            padding: 10px;
+            margin: 55px auto;
+            max-width: 170px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #6c52526c;
+        }
+        #confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
     </style>
 </head>
 <body>
@@ -169,13 +187,114 @@
             <div class="caption">Games</div>
         </div>
     </div>
-    <div>   </div>
+
+        <video width="600" height="300" autoplay loop muted>
+            <source src="flower-vid.mp4" type="video/mp4">
+        </video>
+        <video width="600" height="300" autoplay loop muted>
+            <source src="flower-vid.mp4" type="video/mp4">
+        </video>
+        <video width="600" height="300" autoplay loop muted>
+            <source src="flower-vid.mp4" type="video/mp4">
+        </video>
+        <video width="600" height="300" autoplay loop muted>
+            <source src="flower-vid.mp4" type="video/mp4">
+        </video>
+        <video width="600" height="300" autoplay loop muted>
+            <source src="flower-vid.mp4" type="video/mp4">
+        </video>
+        <video width="600" height="300" autoplay loop muted>
+            <source src="flower-vid.mp4" type="video/mp4">
+        </video>
     <div class="message">
-    <p calss="text" style="font-size:1.2em;">
+    <p calss="text" style="font-size:1.2em; justify-content: center; text-align: center; margin-top: 20px;">
         Happy birthday! My love, I want to say that I'm happy to meet you and I love you so much. My wish for your birthday is to have a wonderful year ahead! Always remember that I love you so much. Super, if I have the money to sustain you, I will marry you on the spot. Don't worry, I'm not gonna cheat on you. I'll promise that in the church on your birthday. I hope you're in here seeing me crying while making this because I miss you a lot, bebe ko. I love you so muchhh. More birthdays to come and more memories to make with you. I love you so muchhh, my bebe ko. Happy birthday again, my love ❤️
     </p>
     </div>
     </p>
     <button id="openButton" onclick="window.location.href='front.html'">Back</button>
+
+    <canvas id="confetti"></canvas>
+
+<script>
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confettiPieces = [];
+    const colors = ['#ff1493', '#ffd700', '#00ff7f', '#1e90ff', '#ff4500', '#ff69b4', '#ffffff'];
+
+    class Confetti {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height - canvas.height;
+            this.size = Math.random() * 12 + 7;
+            this.speed = Math.random() * 4 + 2;
+            this.angle = Math.random() * 360;
+            this.rotationSpeed = Math.random() * 0.15 + 0.05;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        update() {
+            this.y += this.speed;
+            this.angle += this.rotationSpeed;
+            if (this.y > canvas.height) {
+                this.y = -20;
+                this.x = Math.random() * canvas.width;
+            }
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle);
+            ctx.fillStyle = this.color;
+            ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size * 0.6);
+            ctx.restore();
+        }
+    }
+
+    // Create 150 confetti pieces
+    for (let i = 0; i < 250; i++) {
+        confettiPieces.push(new Confetti());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces.forEach(piece => {
+            piece.update();
+            piece.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Resize support
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop muted>
+    <source src="Buko.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const music = document.getElementById('bgMusic');
+    
+    // Remove mute after page loads (to bypass autoplay restrictions)
+    window.addEventListener('load', () => {
+        music.muted = false;
+        music.play().catch(() => {
+            // Silent fail - no error shown
+        });
+    });
+</script>
+
 </body>
 </html>
