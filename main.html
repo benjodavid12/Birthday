@@ -279,7 +279,6 @@
     });
 </script>
 
-<!-- Background Music -->
 <audio id="bgMusic" autoplay loop muted>
     <source src="Buko.mp3" type="audio/mpeg">
 </audio>
@@ -287,11 +286,9 @@
 <script>
     const music = document.getElementById('bgMusic');
     
-    // Remove mute after page loads (to bypass autoplay restrictions)
     window.addEventListener('load', () => {
         music.muted = false;
         music.play().catch(() => {
-            // Silent fail - no error shown
         });
     });
 </script>
